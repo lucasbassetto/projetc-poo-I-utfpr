@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GerenciadorVeiculos implements Aluguel {
 
     private static Leitura l = Leitura.getLeitura();
@@ -36,7 +35,7 @@ public class GerenciadorVeiculos implements Aluguel {
     }
 
     public static Carro consultarCarro(String placa) {
-        for (Carro carro : carros) {
+        for(Carro carro : carros) {
             if(carro.getPlaca().equalsIgnoreCase(placa)) {
                 return carro;
             }
@@ -66,8 +65,8 @@ public class GerenciadorVeiculos implements Aluguel {
 
     public static void listarCarros() {
         boolean carrosDisponiveis = false;
-        System.out.println("\" ======= VEICULOS DISPONIVEIS ====== \"");
-        for (Carro carro : carros) {
+        System.out.println("\" ======= CARROS DISPONIVEIS ====== \"");
+        for(Carro carro : carros) {
             if (carro.isDisponivel()) {
                 System.out.println("\n"
                         + "Placa.....: " + carro.getPlaca() + "\n"
@@ -98,7 +97,7 @@ public class GerenciadorVeiculos implements Aluguel {
     }
 
     public static Moto consultarMoto(String placa) {
-        for (Moto moto : motos) {
+        for(Moto moto : motos) {
             if(moto.getPlaca().equalsIgnoreCase(placa)) {
                 return moto;
             }
@@ -128,8 +127,8 @@ public class GerenciadorVeiculos implements Aluguel {
 
     public static void listarMotos() {
         boolean motosDisponiveis = false;
-        System.out.println("\" ======= VEICULOS DISPONIVEIS ====== \"");
-        for (Moto moto : motos) {
+        System.out.println("\" ======= MOTOS DISPONIVEIS ====== \"");
+        for(Moto moto : motos) {
             if (moto.isDisponivel()) {
                 System.out.println("\n"
                         + "Placa.....: " + moto.getPlaca() + "\n"
@@ -140,21 +139,21 @@ public class GerenciadorVeiculos implements Aluguel {
             }
         }
         if (!motosDisponiveis) {
-            System.out.println("O sistema não possui carros disponíveis!");
+            System.out.println("O sistema não possui motos disponíveis!");
         }
     }
 
     @Override
     public void alugarCarro(String placa) throws VeiculoNaoDisponivelException {
         Carro carroEncontrado = null;
-        for (Carro carro : carros) {
+        for(Carro carro : carros) {
             if (carro.getPlaca().equalsIgnoreCase(placa) && carro.isDisponivel()) {
                 carroEncontrado = carro;
                 break;
             }
         }
-        if (carroEncontrado == null) {
-            throw new VeiculoNaoDisponivelException("Não foi possível alugar o carro.");
+        if(carroEncontrado == null) {
+            throw new VeiculoNaoDisponivelException("Não foi possível alugar o carro pois nao esta disponivel/cadastrados no sistema.");
         } else {
             carroEncontrado.setDisponivel(false);
             System.out.println("Veículo alugado com sucesso!");
@@ -165,14 +164,14 @@ public class GerenciadorVeiculos implements Aluguel {
     @Override
     public void alugarMoto(String placa) throws VeiculoNaoDisponivelException {
         Moto motoEncontrada = null;
-        for (Moto moto : motos) {
+        for(Moto moto : motos) {
             if (moto.getPlaca().equalsIgnoreCase(placa) && moto.isDisponivel()) {
                 motoEncontrada = moto;
                 break;
             }
         }
-        if (motoEncontrada == null) {
-            throw new VeiculoNaoDisponivelException("Não foi possível alugar o carro.");
+        if(motoEncontrada == null) {
+            throw new VeiculoNaoDisponivelException("Não foi possível alugar a moto pois nao esta disponivel/cadastrados no sistema.");
         } else {
             motoEncontrada.setDisponivel(false);
             System.out.println("Veículo alugado com sucesso!");
@@ -180,17 +179,23 @@ public class GerenciadorVeiculos implements Aluguel {
         }
     }
 
-//    @Override
-//    public void alugarSuv() {
-//        for(Suv suv : suvs) {
-//            if(suv.getPlaca().equalsIgnoreCase(placa) && suv.isDisponivel()) {
-//                suv.setDisponivel(false);
-//                System.out.println("Veículo aluado com sucesso!");
-//            } else  {
-//                System.out.println("Não foi possível alugar o veículo com a placa informada.");
-//            }
-//        }
-//    }
+    @Override
+    public void alugarSuv(String placa) throws VeiculoNaoDisponivelException {
+        Suv suvEncontrado = null;
+        for(Suv suv : suvs) {
+            if (suv.getPlaca().equalsIgnoreCase(placa) && suv.isDisponivel()) {
+                suvEncontrado = suv;
+                break;
+            }
+        }
+        if(suvEncontrado == null) {
+            throw new VeiculoNaoDisponivelException("Não foi possível alugar o SUV pois nao esta disponivel/cadastrados no sistema.");
+        } else {
+            suvEncontrado.setDisponivel(false);
+            System.out.println("Veículo alugado com sucesso!");
+            suvs.remove(suvEncontrado);
+        }
+    }
 
 }
 

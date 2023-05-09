@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Principal {
 
     static Carro carro = new Carro();
     static Moto moto = new Moto();
     static Leitura l = Leitura.getLeitura();
 
-    static List<Veiculo> veiculos = new ArrayList<>();
     static GerenciadorVeiculos gv = GerenciadorVeiculos.getBd();
 
     public static void main(String[] args) {
@@ -32,11 +28,11 @@ public class Principal {
             System.out.println("3) ALTERAR A PLACA DO CARRO");
             System.out.println("4) LISTAR TODOS CARROS");
             System.out.println("5) ALUGAR CARROS");
-//            System.out.println("\n5) INSERIR UMA MOTO");
-//            System.out.println("6) CONSULTAR MOTO PELA PLACA");
-//            System.out.println("7) ALTERAR A PLACA DA MOTO");
-//            System.out.println("8) LISTAR TODAS MOTOS");
-//            System.out.println("8) ALUGAR MOTOS");
+            System.out.println("\n6) INSERIR UMA MOTO");
+            System.out.println("7) CONSULTAR MOTO PELA PLACA");
+            System.out.println("8) ALTERAR A PLACA DA MOTO");
+            System.out.println("9) LISTAR TODAS MOTOS");
+            System.out.println("8) ALUGAR MOTOS");
 //            System.out.println("\n9) INSERIR UM SUV");
 //            System.out.println("10) CONSULTAR SUV PELA PLACA");
 //            System.out.println("11) ALTERAR A PLACA DO SUV");
@@ -88,7 +84,6 @@ public class Principal {
                     } catch (VeiculoNaoDisponivelException e) {
                         System.out.println("ERRO: " + e.getMessage());
                     }
-
                     break;
 
                 case 6:
@@ -117,6 +112,9 @@ public class Principal {
                     moto = new Moto();
                     moto.setPlaca(l.entDados("Placa a ser Alterada: "));
                     moto = GerenciadorVeiculos.alterarPlacaMoto(moto.getPlaca());
+                    if(moto == null) {
+                        l.entDados("\nNão existe moto com essa placa cadastrada - tecle ENTER para continuar");
+                    }
                     break;
 
                 case 9:

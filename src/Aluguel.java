@@ -6,6 +6,6 @@ public interface Aluguel {
 
     void alugarMoto(String placa)  throws VeiculoNaoDisponivelException;
 
-//    void augarSuv(String placa);
+    void alugarSuv(String placa)  throws VeiculoNaoDisponivelException;
 
 }
