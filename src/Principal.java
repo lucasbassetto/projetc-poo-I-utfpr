@@ -36,6 +36,7 @@ public class Principal {
 //            System.out.println("6) CONSULTAR MOTO PELA PLACA");
 //            System.out.println("7) ALTERAR A PLACA DA MOTO");
 //            System.out.println("8) LISTAR TODAS MOTOS");
+//            System.out.println("8) ALUGAR MOTOS");
 //            System.out.println("\n9) INSERIR UM SUV");
 //            System.out.println("10) CONSULTAR SUV PELA PLACA");
 //            System.out.println("11) ALTERAR A PLACA DO SUV");
@@ -49,15 +50,15 @@ public class Principal {
                     carro = new Carro();
                     carro = GerenciadorVeiculos.cadastrarCarro(carro);
                     if(carro != null) {
-                        l.entDados("\nCarro cadastrado com sucesso - tecle ENTER para continuar");
+                        l.entDados("\nCARRO CADASTRADO COM SUCESSO - tecle ENTER para continuar");
                     } else {
-                        l.entDados("\nPLACA DUPLICADA - tecle ENTER para continuar");
+                        l.entDados("\nPlaca DUPLICADA - tecle ENTER para continuar");
                     }
                     break;
 
                 case 2:
                     carro = new Carro();
-                    carro.setPlaca(l.entDados("PLACA A SER CONSULTADA: "));
+                    carro.setPlaca(l.entDados("Placa a ser CONSULTADA: "));
                     carro = GerenciadorVeiculos.consultarCarro(carro.getPlaca());
                     if(carro != null){
                         GerenciadorVeiculos.imprimirPlacaCadastrada(carro);
@@ -69,8 +70,12 @@ public class Principal {
 
                 case 3:
                     carro = new Carro();
-                    carro.setPlaca(l.entDados("PLACA A SER ALTERADA: "));
+                    carro.setPlaca(l.entDados("Placa a ser ALTERADA: "));
                     carro = GerenciadorVeiculos.alterarPlacaCarro(carro.getPlaca());
+                    if(carro == null) {
+                        l.entDados("\nNão existe carro com essa placa cadastrada - tecle ENTER para continuar");
+                    }
+                    break;
 
                 case 4:
                     GerenciadorVeiculos.listarCarros();
@@ -78,39 +83,53 @@ public class Principal {
 
                 case 5:
                     carro = new Carro();
-                    gv.alugarCarro(l.entDados("Digite a placa do carro que você deseja alugar: "));
+                    try {
+                        gv.alugarCarro(l.entDados("Digite a placa do carro que você deseja alugar: "));
+                    } catch (VeiculoNaoDisponivelException e) {
+                        System.out.println("ERRO: " + e.getMessage());
+                    }
 
-//                case 5:
-//                    moto = new Moto();
-//                    moto = GerenciadorVeiculos.cadastrarMoto(moto);
-//                    if(moto != null) {
-//                        l.entDados("\nMoto cadastrada com sucesso - tecle ENTER para continuar");
-//                    } else {
-//                        l.entDados("\nPlaca DUPLICADA - press <ENTER> to continue...");
-//                    }
-//                    break;
-//
-//                case 6:
-//                    moto = new Moto();
-//                    moto.setPlaca(l.entDados("PLACA A SER CONSULTADA: "));
-//                    moto = GerenciadorVeiculos.consultarMoto(moto.getPlaca());
-//                    if(moto != null) {
-//                        GerenciadorVeiculos.imprimirPlacaCadastradaMoto(moto);
-//                    }
-//                    else{
-//                        l.entDados("\n Não existe moto com essa placa cadastrada - tecle ENTER para continuar");
-//                    }
-//                    break;
-//
-//                case 7:
-//                    moto = new Moto();
-//                    moto.setPlaca(l.entDados("PLACA A SER ALTERADA: "));
-//                    moto = GerenciadorVeiculos.alterarPlacaMoto(moto.getPlaca());
-//
-//                case 8:
-//                    GerenciadorVeiculos.listarMotos();
-//                    break;
+                    break;
 
+                case 6:
+                    moto = new Moto();
+                    moto = GerenciadorVeiculos.cadastrarMoto(moto);
+                    if(moto != null) {
+                        l.entDados("\nMoto cadastrada com sucesso - tecle ENTER para continuar");
+                    } else {
+                        l.entDados("\nPlaca DUPLICADA - tecle ENTER para continuar");
+                    }
+                    break;
+
+                case 7:
+                    moto = new Moto();
+                    moto.setPlaca(l.entDados("Placa a ser CONSULTADA: "));
+                    moto = GerenciadorVeiculos.consultarMoto(moto.getPlaca());
+                    if(moto != null) {
+                        GerenciadorVeiculos.imprimirPlacaCadastradaMoto(moto);
+                    }
+                    else{
+                        l.entDados("\nNão existe moto com essa placa cadastrada - tecle ENTER para continuar");
+                    }
+                    break;
+
+                case 8:
+                    moto = new Moto();
+                    moto.setPlaca(l.entDados("Placa a ser Alterada: "));
+                    moto = GerenciadorVeiculos.alterarPlacaMoto(moto.getPlaca());
+                    break;
+
+                case 9:
+                    GerenciadorVeiculos.listarMotos();
+                    break;
+
+                case 10:
+                    moto = new Moto();
+                    try {
+                        gv.alugarMoto(l.entDados("Digite a placa da moto que você deseja alugar: "));
+                    } catch (VeiculoNaoDisponivelException e) {
+                        System.out.println("ERRO: " + e.getMessage());
+                    }
             }
         }
     }
