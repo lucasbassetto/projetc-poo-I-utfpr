@@ -1,7 +1,10 @@
+// Lucas Feliciano Bassetto - RA: 1750658
+
 public class Principal {
 
     static Carro carro = new Carro();
     static Moto moto = new Moto();
+    static Suv suv = new Suv();
     static Leitura l = Leitura.getLeitura();
 
     static GerenciadorVeiculos gv = GerenciadorVeiculos.getBd();
@@ -27,19 +30,20 @@ public class Principal {
             System.out.println("2) CONSULTAR CARRO PELA PLACA");
             System.out.println("3) ALTERAR A PLACA DO CARRO");
             System.out.println("4) LISTAR TODOS CARROS");
-            System.out.println("5) ALUGAR CARROS");
+            System.out.println("5) ALUGAR CARRO");
             System.out.println("\n6) INSERIR UMA MOTO");
             System.out.println("7) CONSULTAR MOTO PELA PLACA");
             System.out.println("8) ALTERAR A PLACA DA MOTO");
             System.out.println("9) LISTAR TODAS MOTOS");
-            System.out.println("8) ALUGAR MOTOS");
-//            System.out.println("\n9) INSERIR UM SUV");
-//            System.out.println("10) CONSULTAR SUV PELA PLACA");
-//            System.out.println("11) ALTERAR A PLACA DO SUV");
-//            System.out.println("12) LISTAR TODOS SUV'S");
+            System.out.println("10) ALUGAR MOTO");
+            System.out.println("\n11) INSERIR UM SUV");
+            System.out.println("12) CONSULTAR SUV PELA PLACA");
+            System.out.println("13) ALTERAR A PLACA DO SUV");
+            System.out.println("14) LISTAR TODOS SUV'S");
+            System.out.println("15) ALUGAR SUV");
             System.out.println("0) SAIR");
 
-            int op = Integer.parseInt(l.entDados("Escolha uma opção: "));
+            int op = Integer.parseInt(l.entDados("Escolha uma opçao: "));
 
             switch (op) {
                 case 1:
@@ -60,7 +64,7 @@ public class Principal {
                         GerenciadorVeiculos.imprimirPlacaCadastrada(carro);
                     }
                     else {
-                        l.entDados("\nNão existe carro com essa placa cadastrada - tecle ENTER para continuar");
+                        l.entDados("\nNao existe carro com essa placa cadastrada - tecle ENTER para continuar");
                     }
                     break;
 
@@ -69,7 +73,7 @@ public class Principal {
                     carro.setPlaca(l.entDados("Placa a ser ALTERADA: "));
                     carro = GerenciadorVeiculos.alterarPlacaCarro(carro.getPlaca());
                     if(carro == null) {
-                        l.entDados("\nNão existe carro com essa placa cadastrada - tecle ENTER para continuar");
+                        l.entDados("\nNao existe carro com essa placa cadastrada - tecle ENTER para continuar");
                     }
                     break;
 
@@ -104,7 +108,7 @@ public class Principal {
                         GerenciadorVeiculos.imprimirPlacaCadastradaMoto(moto);
                     }
                     else{
-                        l.entDados("\nNão existe moto com essa placa cadastrada - tecle ENTER para continuar");
+                        l.entDados("\nNao existe moto com essa placa cadastrada - tecle ENTER para continuar");
                     }
                     break;
 
@@ -113,7 +117,7 @@ public class Principal {
                     moto.setPlaca(l.entDados("Placa a ser Alterada: "));
                     moto = GerenciadorVeiculos.alterarPlacaMoto(moto.getPlaca());
                     if(moto == null) {
-                        l.entDados("\nNão existe moto com essa placa cadastrada - tecle ENTER para continuar");
+                        l.entDados("\nNao existe moto com essa placa cadastrada - tecle ENTER para continuar");
                     }
                     break;
 
@@ -128,6 +132,50 @@ public class Principal {
                     } catch (VeiculoNaoDisponivelException e) {
                         System.out.println("ERRO: " + e.getMessage());
                     }
+
+                case 11:
+                    suv = new Suv();
+                    suv = GerenciadorVeiculos.cadastrarSuv(suv);
+                    if(suv != null) {
+                        l.entDados("\nSUV CADASTRADO COM SUCESSO - tecle ENTER para continuar");
+                    } else {
+                        l.entDados("\nPlaca DUPLICADA - tecle ENTER para continuar");
+                    }
+                    break;
+
+                case 12:
+                    suv = new Suv();
+                    suv.setPlaca(l.entDados("Placa a ser CONSULTADA: "));
+                    suv = GerenciadorVeiculos.consultarSuv(suv.getPlaca());
+                    if(suv != null){
+                        GerenciadorVeiculos.imprimirPlacaCadastradaSuv(suv);
+                    }
+                    else {
+                        l.entDados("\nNao existe suv com essa placa cadastrada - tecle ENTER para continuar");
+                    }
+                    break;
+
+                case 13:
+                    suv = new Suv();
+                    suv.setPlaca(l.entDados("Placa a ser ALTERADA: "));
+                    suv = GerenciadorVeiculos.alterarPlacaSuv(suv.getPlaca());
+                    if(suv == null) {
+                        l.entDados("\nNao existe suv com essa placa cadastrada - tecle ENTER para continuar");
+                    }
+                    break;
+
+                case 14:
+                    GerenciadorVeiculos.listarSuvs();
+                    break;
+
+                case 15:
+                    suv = new Suv();
+                    try {
+                        gv.alugarSuv(l.entDados("Digite a placa do suv que você deseja alugar: "));
+                    } catch (VeiculoNaoDisponivelException e) {
+                        System.out.println("ERRO: " + e.getMessage());
+                    }
+                    break;
             }
         }
     }
