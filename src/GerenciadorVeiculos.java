@@ -155,9 +155,11 @@ public class GerenciadorVeiculos implements Aluguel {
         suv.setModelo(l.entDados("Modelo.....: "));
         suv.setCor(l.entDados("Cor.....: "));
         suv.setCapacidadePassageiros(Integer.parseInt(l.entDados("Capacidade de passageiros.....: ")));
-        String temTetoSolarStr = l.entDados("Tem teto solar? (true/false)");
-        boolean temTetoSolar = Boolean.parseBoolean(temTetoSolarStr);
-        suv.isTemTetoSolar(temTetoSolar);
+        suv.setTemTetoSolar(l.entDados("Possui teto solar? (S/N)"));
+        while(!suv.getTemTetoSolar().equalsIgnoreCase("S") && !suv.getTemTetoSolar().equalsIgnoreCase("N")) {
+            suv.setTemTetoSolar(l.entDados("Dado inválido, digite S/N"));
+        }
+
         suv.setDisponivel(true);
 
         if(consultarSuv(String.valueOf(suv.getPlaca())) == null) {
@@ -183,7 +185,8 @@ public class GerenciadorVeiculos implements Aluguel {
                 + "Marca.....: " + suv.getMarca() + "\n"
                 + "Modelo....: " + suv.getModelo() + "\n"
                 + "Cor.......: " + suv.getCor() + "\n"
-                + "Capacidade de passageiros.....: " + suv.getCapacidadePassageiros());
+                + "Capacidade de passageiros.....: " + suv.getCapacidadePassageiros() + "\n"
+                + "Possui teto solar.....: " + suv.getTemTetoSolar());
     }
 
     public static Suv alterarPlacaSuv(String placa) {
@@ -199,7 +202,7 @@ public class GerenciadorVeiculos implements Aluguel {
 
     public static void listarSuvs() {
         boolean suvsDisponiveis = false;
-        System.out.println("\" ======= SUV'S DISPONIVEIS ====== \"");
+        System.out.println("\" ================= SUV'S DISPONIVEIS =================  \"");
         for(Suv suv : suvs) {
             if (suv.isDisponivel()) {
                 System.out.println("\n"
@@ -207,7 +210,8 @@ public class GerenciadorVeiculos implements Aluguel {
                         + "Marca.....: " + suv.getMarca() + "\n"
                         + "Modelo....: " + suv.getModelo() + "\n"
                         + "Cor.......: " + suv.getCor() + "\n"
-                        + "Capacidade de passageiros.....: " + suv.getCapacidadePassageiros());
+                        + "Capacidade de passageiros.....: " + suv.getCapacidadePassageiros() + "\n"
+                        + "Possui teto solar.....: " + suv.getTemTetoSolar());
                 suvsDisponiveis = true;
             }
         }

@@ -3,12 +3,12 @@
 public class Suv extends Veiculo {
 
     private int capacidadePassageiros;
-    private boolean temTetoSolar;
+    private String temTetoSolar;
 
     public Suv() {
     }
 
-    public Suv(String placa, String marca, String modelo, String cor, boolean isDisponivel, int capacidadePassageiros, boolean temTetoSolar) {
+    public Suv(String placa, String marca, String modelo, String cor, boolean isDisponivel, int capacidadePassageiros, String temTetoSolar) {
         super(placa, marca, modelo, cor, isDisponivel);
         this.capacidadePassageiros = capacidadePassageiros;
         this.temTetoSolar = temTetoSolar;
@@ -22,11 +22,11 @@ public class Suv extends Veiculo {
         this.capacidadePassageiros = capacidadePassageiros;
     }
 
-    public boolean isTemTetoSolar(boolean temTetoSolar) {
-        return this.temTetoSolar;
+    public String getTemTetoSolar() {
+        return temTetoSolar;
     }
 
-    public void setTemTetoSolar(boolean temTetoSolar) {
+    public void setTemTetoSolar(String temTetoSolar) {
         this.temTetoSolar = temTetoSolar;
     }
 }
