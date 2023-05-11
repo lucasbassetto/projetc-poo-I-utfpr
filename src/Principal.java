@@ -11,16 +11,16 @@ public class Principal {
 
     public static void main(String[] args) {
 
-//        Cliente c = new Cliente();
-//
-//        System.out.println("\n------------ INSIRA OS DADOS DO CLIENTE ----------");
-//        c.setNome(l.entDados("DIGITE O NOME DO CLIENTE: "));
-//        c.setCpf(l.entDados("DIGITE O CPF DO  CLIENTE: "));
-//        c.setEndereco(l.entDados("DIGITE O ENDEREÇO DO CLIENTE: "));
-//        c.setTelefone(l.entDados("DIGITE O TELEFONE DO CLIENTE: "));
-//
-//        //Mostrando no console os dados do cliente digitado
-//        System.out.println(c);
+        Cliente c = new Cliente();
+
+        System.out.println("\n------------ INSIRA OS DADOS DO CLIENTE ----------");
+        c.setNome(l.entDados("DIGITE O NOME DO CLIENTE: "));
+        c.setCpf(l.entDados("DIGITE O CPF DO  CLIENTE: "));
+        c.setEndereco(l.entDados("DIGITE O ENDEREÇO DO CLIENTE: "));
+        c.setTelefone(l.entDados("DIGITE O TELEFONE DO CLIENTE: "));
+
+        //Mostrando no console os dados do cliente digitado
+        System.out.println(c);
 
         boolean flag = true;
 
@@ -61,7 +61,7 @@ public class Principal {
                     carro.setPlaca(l.entDados("Placa a ser CONSULTADA: "));
                     carro = GerenciadorVeiculos.consultarCarro(carro.getPlaca());
                     if(carro != null){
-                        GerenciadorVeiculos.imprimirPlacaCadastrada(carro);
+                        GerenciadorVeiculos.imprimirPlacaCadastradaCarro(carro);
                     }
                     else {
                         l.entDados("\nNao existe carro com essa placa cadastrada - tecle ENTER para continuar");

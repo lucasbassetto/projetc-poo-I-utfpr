@@ -8,7 +8,6 @@ public class Leitura {
 
     private static Leitura l;
 
-
     public static Leitura getLeitura() {
 
         if(l == null) {

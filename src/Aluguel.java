@@ -1,4 +1,5 @@
-import java.time.LocalDate;
+// Lucas Feliciano Bassetto - RA: 1750658
+
 
 public interface Aluguel {
 

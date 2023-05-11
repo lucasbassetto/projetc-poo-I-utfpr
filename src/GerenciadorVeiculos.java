@@ -45,7 +45,7 @@ public class GerenciadorVeiculos implements Aluguel {
         return null;
     }
 
-    public static void imprimirPlacaCadastrada(Carro carro){
+    public static void imprimirPlacaCadastradaCarro(Carro carro){
         System.out.println("Placa já cadastrada: ");
         System.out.println("\n"
                 + "Placa.....: " + carro.getPlaca() + "\n"
@@ -272,7 +272,6 @@ public class GerenciadorVeiculos implements Aluguel {
             suvs.remove(suvEncontrado);
         }
     }
-
 }
 
 
