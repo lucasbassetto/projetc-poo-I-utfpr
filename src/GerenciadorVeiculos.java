@@ -151,6 +151,7 @@ public class GerenciadorVeiculos implements Aluguel {
             System.out.println("O sistema nao possui motos disponiveis!");
         }
     }
+
     public static Suv cadastrarSuv(Suv suv) {
         suv.setPlaca((l.entDados("Placa.....: ")));
         suv.setMarca(l.entDados("Marca.....: "));
