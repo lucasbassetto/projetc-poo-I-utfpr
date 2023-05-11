@@ -132,6 +132,7 @@ public class Principal {
                     } catch (VeiculoNaoDisponivelException e) {
                         System.out.println("ERRO: " + e.getMessage());
                     }
+                    break;
 
                 case 11:
                     suv = new Suv();
@@ -175,6 +176,13 @@ public class Principal {
                     } catch (VeiculoNaoDisponivelException e) {
                         System.out.println("ERRO: " + e.getMessage());
                     }
+                    break;
+
+                case 0:
+                    System.exit(0);
+
+                default:
+                    l.entDados("\n Deve escolher entre 0 e 15 - tecle ENTER para continuar");
                     break;
             }
         }
