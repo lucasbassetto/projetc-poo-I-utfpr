@@ -118,7 +118,7 @@ public class GerenciadorVeiculos implements Aluguel {
                 + "Modelo....: " + moto.getModelo() + "\n"
                 + "Cor.......: " + moto.getCor() + "\n"
                 + "Cilindradas.......: " + moto.getCilindradas() + "\n"
-                + "Categoria.......: " + moto.getCilindradas());
+                + "Categoria.......: " + moto.getCategoria());
     }
 
     public static Moto alterarPlacaMoto(String placa) {
@@ -141,7 +141,9 @@ public class GerenciadorVeiculos implements Aluguel {
                         + "Placa.....: " + moto.getPlaca() + "\n"
                         + "Marca.....: " + moto.getMarca() + "\n"
                         + "Modelo....: " + moto.getModelo() + "\n"
-                        + "Cor.......: " + moto.getCor());
+                        + "Cor.......: " + moto.getCor() + "\n"
+                        + "Cilindradas.......: " + moto.getCilindradas() + "\n"
+                        + "Categoria.......: " + moto.getCategoria());
                 motosDisponiveis = true;
             }
         }
@@ -219,6 +221,8 @@ public class GerenciadorVeiculos implements Aluguel {
             System.out.println("O sistema nao possui SUV's disponiveis!");
         }
     }
+
+    //Sobrescrita
     @Override
     public void alugarCarro(String placa) throws VeiculoNaoDisponivelException {
         Carro carroEncontrado = null;

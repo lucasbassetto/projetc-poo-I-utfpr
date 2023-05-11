@@ -60,4 +60,14 @@ public  abstract class Veiculo {
     public void setDisponivel(boolean disponivel) {
         isDisponivel = disponivel;
     }
+
+    //Sobrescrita
+    @Override
+    public String toString() {
+        return "\nDados do veiculo inserido:\n" +
+                "Nome: " + this.getPlaca() +
+                "\nCPF: " + this.getMarca() +
+                "\nEndereço: " + this.getModelo() +
+                "\nTelefone: " + this.getCor();
+    }
 }

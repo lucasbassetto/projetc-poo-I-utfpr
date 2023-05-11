@@ -50,6 +50,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    // Sobrescrita
     @Override
     public String toString() {
         return "\nDados do cliente inserido:\n" +
