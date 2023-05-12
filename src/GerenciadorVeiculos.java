@@ -68,7 +68,7 @@ public class GerenciadorVeiculos implements Aluguel {
 
     public static void listarCarros() {
         boolean carrosDisponiveis = false;
-        System.out.println("\" ======= CARROS DISPONIVEIS ====== \"");
+        System.out.println("\" ================= CARROS DISPONIVEIS ================= \"");
         for(Carro carro : carros) {
             if (carro.isDisponivel()) {
                 System.out.println("\n"
@@ -134,7 +134,7 @@ public class GerenciadorVeiculos implements Aluguel {
 
     public static void listarMotos() {
         boolean motosDisponiveis = false;
-        System.out.println("\" ======= MOTOS DISPONIVEIS ====== \"");
+        System.out.println("\" ================= MOTOS DISPONIVEIS ================= \"");
         for(Moto moto : motos) {
             if (moto.isDisponivel()) {
                 System.out.println("\n"
